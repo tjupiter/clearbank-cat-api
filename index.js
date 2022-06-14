@@ -13,7 +13,7 @@
 let catData
 
 async function fetchCatData(){
-    const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=10&page=10&order=Desc', {
+    const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=100&page=10&order=Desc', {
         headers: {
             'X-API-KEY': '24d14f66-0979-47e9-bbbb-a813b8223ae4'
         }
@@ -40,12 +40,18 @@ async function presentCatPhoto() {
         
         mainCatContainer.innerHTML +=  `
             <div class="cat-container">
-                <img src="${catData[i].url}" alt="cat" class="cat-image"/>
+                <img 
+                    src="${catData[i].url}" 
+                    alt="cat" 
+                    class="cat-image"
+                />
             </div>
         `
     }
 
 }
+
+
 
 let el = document.getElementById('get-cat')
 if (el) {

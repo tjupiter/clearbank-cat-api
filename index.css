@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    
 }
 
 .cat-container {
@@ -15,6 +16,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50px;
+    padding: .5rem;
 }
 
 
