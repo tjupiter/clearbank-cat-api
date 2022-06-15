@@ -57,8 +57,9 @@ async function populateCatPhotos() {
         onLeave: batch => gsap.set(batch, { opacity: 0, autoAlpha: 0, overwrite: true }),
         onEnterBack: batch => gsap.to(batch, { autoAlpha: 1, stagger: 0.15, overwrite: true }),
         onLeaveBack: batch => gsap.set(batch, { autoAlpha: 0, overwrite: true }),
-        markers: true,
-        start: "20px 80%",
+        markers: false,
+        start: "top 85%",
+        end: "bottom 20%"
     });
 
     // the magical helper function (no longer necessary in GSAP 3.3.1 because it was added as ScrollTrigger.batch())...

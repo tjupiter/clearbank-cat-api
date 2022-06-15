@@ -4,29 +4,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <title>Clear Bank Cat API</title>
+    <meta name="description" content="A tiny project for a job application - Get Cat API">
+
     <link rel="stylesheet" href="index.css">
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;500;700&family=Fascinate+Inline&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+    <!-- AWSOME FONT CDN -->
+    <script src="https://kit.fontawesome.com/9b301149a5.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="root">
         <section id="hero">
-            <h2>Welcome to <br><span>KittyPicLand</span></h2>
-            <p>Scroll down for cute kitty pics</p>
+            <h2>Welcome to <br id="hero--br">
+                <span id="hero--kittyland">KittyPicLand</span>
+            </h2>
+            <div id="hero--bottom-text">
+                <p>Scroll down for cute kitty pics</p>
+                
+                <p id="hero--chevron">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </p>
+            </div>
         </section>
-        <!-- <button id="get-cat">GET CAT</button> -->
+
         <section class="main-cat-container">
             
         </section>
     </div>
+    <footer>
+        <h3>Istvan Pitju Balogh</h3>
+        <div id="footer--contacts">
+            <a 
+                href="https://portfolio.pitju.hu" 
+                title="Istvan Balogh's portfolio" 
+                target="_blank"
+                >
+                <i class="fa-solid fa-earth-europe"></i>
+            </a>
+            <a 
+                href="https://portfolio.pitju.hu" 
+                title="Istvan Balogh's github repo" 
+                target="_blank"
+                >
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a 
+                href="https://portfolio.pitju.hu" 
+                title="Istvan Balogh's LinkdIn Profile" 
+                target="_blank"
+            >
+            <i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </footer>
 
     <script src="index.js"></script>
-
-    <script defer>
-        // usage:
-            
-    </script>
 </body>
 </html>
 
