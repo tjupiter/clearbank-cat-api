@@ -53,6 +53,13 @@
     margin-top: -.5rem;
 }
 
+#loading-kitties {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
 .main-cat-container {
     margin: 0 auto;
     gap: .5rem;
