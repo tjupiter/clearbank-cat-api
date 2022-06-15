@@ -1,12 +1,14 @@
 let catData
 
+// https://docs.thecatapi.com/authentication
 async function fetchCatData(){
-    const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=100&page=10&order=Desc', {
+    const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=100', {
         headers: {
             'X-API-KEY': '24d14f66-0979-47e9-bbbb-a813b8223ae4'
         }
     })
         const data = await res.json()
+        console.log(data)
         catData = data;
 }
 
@@ -91,6 +93,3 @@ async function populateCatPhotos() {
 }
 
 populateCatPhotos();
-
-
-
