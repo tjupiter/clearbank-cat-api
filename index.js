@@ -16,7 +16,7 @@ async function populateCatPhotos() {
     mainCatContainer = document.querySelector('.main-cat-container')
 
     mainCatContainer.innerHTML = `
-        <div>Loading new kitties ... </div>
+        <div id="loading-kitties'>Loading new kitties ... </div>
     `
     const getCats = await fetchCatData()
 
