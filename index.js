@@ -1,15 +1,3 @@
-
-// to start with, fetch 20 cat images and display them
-// with flexbox. Add some animation to it
-// 
-
-// 2/ display 1 cat image using react
-// 3) display 20 images using react
-// 4) add selector for the number of images you want to display. Display them with animation
-
-
-
-
 let catData
 
 async function fetchCatData(){
@@ -20,47 +8,58 @@ async function fetchCatData(){
     })
         const data = await res.json()
         catData = data;
-        console.log('fetchCatData has run')
-        console.log(catData)
 }
 
-async function presentCatPhoto() {
+async function populateCatPhotos() {
     mainCatContainer = document.querySelector('.main-cat-container')
 
     mainCatContainer.innerHTML = `
         <div>Loading new kitties ... </div>
     `
-    const getCat = await fetchCatData()
-    let myPromise = new Promise(function (resolve, reject) {
-        resolve(getCat)
+    const getCats = await fetchCatData()
+
+    new Promise(function (resolve, reject) {
+        resolve(getCats)
         mainCatContainer.innerHTML = ""
     })
-
+    
     for (let i = 0; i < catData.length ; i++) {
+        const newDiv = document.createElement('div')
         
-        mainCatContainer.innerHTML +=  `
-            <div class="cat-container">
+        // add classes for funky grid layout
+        if (i % 4 === 0 && i % 6 !== 0) {
+            newDiv.classList.add('vertical')
+        } else if (i % 5 === 0) {
+            newDiv.classList.add('horizontal')
+        } else if (i % 6 === 0) {
+            newDiv.classList.add('bigbox')
+        }
+
+        newDiv.classList.add('cat-container')
+        newDiv.innerHTML = `
                 <img 
                     src="${catData[i].url}" 
                     alt="cat" 
                     class="cat-image"
                 />
-            </div>
         `
+        mainCatContainer.appendChild(newDiv)
     }
-
-    batch(".cat-container", {
-        interval: 0.1, // time window (in seconds) for batching to occur. The first callback that occurs (of its type) will start the timer, and when it elapses, any other similar callbacks for other targets will be batched into an array and fed to the callback. Default is 0.1
-        batchMax: 3,   // maximum batch size (targets)
-        onEnter: batch => gsap.to(batch, { autoAlpha: 1, stagger: 0.45, overwrite: true }),
-        onLeave: batch => gsap.set(batch, { autoAlpha: 0, overwrite: true }),
-        onEnterBack: batch => gsap.to(batch, { autoAlpha: 1, stagger: 0.45, overwrite: true }),
-        onLeaveBack: batch => gsap.set(batch, { autoAlpha: 0, overwrite: true })
-        // you can also define things like start, end, etc.
+  
+    // GSAP ANIMATION
+    // more info:
+    // --> https://greensock.com/docs/v3/Plugins/ScrollTrigger
+    // -->  https://codepen.io/GreenSock/pen/dyGyopR/823312ec3785be7b25315ec2efd517d8
+    batch(".cat-image", {
+        interval: 0.1, 
+        batchMax: 3,  
+        onEnter: batch => gsap.to(batch, { opacity: 1, autoAlpha: 1, stagger: 0.15, overwrite: true }),
+        onLeave: batch => gsap.set(batch, { opacity: 0, autoAlpha: 0, overwrite: true }),
+        onEnterBack: batch => gsap.to(batch, { autoAlpha: 1, stagger: 0.15, overwrite: true }),
+        onLeaveBack: batch => gsap.set(batch, { autoAlpha: 0, overwrite: true }),
+        markers: true,
+        start: "20px 80%",
     });
-
-
-
 
     // the magical helper function (no longer necessary in GSAP 3.3.1 because it was added as ScrollTrigger.batch())...
     function batch(targets, vars) {
@@ -88,14 +87,9 @@ async function presentCatPhoto() {
             ScrollTrigger.create(config);
         });
     }
-
 }
 
+populateCatPhotos();
 
-
-let el = document.getElementById('get-cat')
-if (el) {
-    el.addEventListener('click', presentCatPhoto)
-}
 
 
